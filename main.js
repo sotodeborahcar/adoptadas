@@ -136,65 +136,46 @@ const mostrarEnHTML = (gatos) => {
   </div>
   `;
   });
-};
-console.log(gatos);
-mostrarEnHTML(gatos);
 
-// const contExtra = document.querySelector(".adopt-extra");
-// gatos.map((gato) => {
-//   contExtra.innerHTML = `<div class="card">
-//   <div class="card_img">
-//   <img src="${gato.img}" />
-//   </div>
-//   <div class="card_info">
-//   <h3>${gato.name}</h3>
-//   <p>${gato.shortDesc}</p>
-//   <button class="botonVerMas">Ver mas</button>
-//   <i id="corazon" class="fa fa-heart"></i> <p id="likes">0</p>
-//   </div>
-// </div>
-// `;
-// });
+  const corazones = document.querySelectorAll("#corazon");
+  const likes = document.querySelectorAll("#likes");
 
-const corazones = document.querySelectorAll("#corazon");
-const likes = document.querySelectorAll("#likes");
+  // console.log(corazones);
 
-// console.log(corazones);
+  // forEach => RECORRE ELEMENTOS DE UNA LISTA DE NODOS , SIMILAR AL MAP (TIPO CLON)
 
-// forEach => RECORRE ELEMENTOS DE UNA LISTA DE NODOS , SIMILAR AL MAP (TIPO CLON)
+  corazones.forEach((corazon, indiceCorazon) => {
+    corazon.onclick = () => {
+      console.log("me hicieron click", indiceCorazon);
 
-corazones.forEach((corazon, indiceCorazon) => {
-  corazon.onclick = () => {
-    console.log("me hicieron click", indiceCorazon);
+      // mega sugerencia de marian, borro lo de abajo:
+      // let cantidadDeLikes = Numbres(likes[indiceCorazon].textContent)
+      // cantidadDeLikes++
 
-    // mega sugerencia de marian, borro lo de abajo:
-    // let cantidadDeLikes = Numbres(likes[indiceCorazon].textContent)
-    // cantidadDeLikes++
+      likes.forEach((like, indiceLike) => {
+        if (indiceCorazon === indiceLike) {
+          let cantidadDeLikes = Number(like.textContent);
+          cantidadDeLikes++;
+          like.textContent = cantidadDeLikes;
+        }
+      });
+    };
+  });
 
-    likes.forEach((like, indiceLike) => {
-      if (indiceCorazon === indiceLike) {
-        let cantidadDeLikes = Number(like.textContent);
-        cantidadDeLikes++;
-        like.textContent = cantidadDeLikes;
-      }
-    });
-  };
-});
+  // modal
 
-// modal
+  const botones = document.querySelectorAll(".botonVerMas");
+  const modal = document.querySelector(".modal");
+  const modalContenido = document.querySelector(".modalContenido");
+  const cerrarModal = document.querySelector("#cerrarModal");
 
-const botones = document.querySelectorAll(".botonVerMas");
-const modal = document.querySelector(".modal");
-const modalContenido = document.querySelector(".modalContenido");
-const cerrarModal = document.querySelector("#cerrarModal");
+  //console.log(botones);
 
-//console.log(botones);
-
-botones.forEach((boton) => {
-  boton.onclick = () => {
-    gatos.map((gato) => {
-      if (gato.name === boton.dataset.name) {
-        modalContenido.innerHTML = `
+  botones.forEach((boton) => {
+    boton.onclick = () => {
+      gatos.map((gato) => {
+        if (gato.name === boton.dataset.name) {
+          modalContenido.innerHTML = `
           <div class="color-modal">
            <div class="modal-contenido">
               <h3>Nombre: ${gato.name}</h3>
@@ -211,15 +192,18 @@ botones.forEach((boton) => {
             </div>
           </div>
           `;
-      }
-    });
-    modal.classList.remove("noMostrar");
-  };
-});
+        }
+      });
+      modal.classList.remove("noMostrar");
+    };
+  });
 
-cerrarModal.onclick = () => {
-  modal.classList.add("noMostrar");
+  cerrarModal.onclick = () => {
+    modal.classList.add("noMostrar");
+  };
 };
+console.log(gatos);
+mostrarEnHTML(gatos);
 
 // formulario
 
@@ -232,6 +216,7 @@ form.onsubmit = (e) => {
 
   radios.forEach((radio) => {
     if (radio.checked) {
+      // checked me permite saber si le hicieron click
       contenedor.innerHTML = "";
 
       if (radio.value === "i") {
@@ -247,3 +232,19 @@ form.onsubmit = (e) => {
     }
   });
 };
+
+// const contExtra = document.querySelector(".adopt-extra");
+// gatos.map((gato) => {
+//   contExtra.innerHTML = `<div class="card">
+//   <div class="card_img">
+//   <img src="${gato.img}" />
+//   </div>
+//   <div class="card_info">
+//   <h3>${gato.name}</h3>
+//   <p>${gato.shortDesc}</p>
+//   <button class="botonVerMas">Ver mas</button>
+//   <i id="corazon" class="fa fa-heart"></i> <p id="likes">0</p>
+//   </div>
+// </div>
+// `;
+// });
