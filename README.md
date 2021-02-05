@@ -6,5 +6,5 @@
 
 - En la section con la clase "adopt" debemos ver tarjetas de gatitos a partir del array que tenemos en JavaScript. 
 
-##"DEPLOYADO" 
-[Link a proyecto en linea](https://sotodeborahcar.github.io/adoptadas/)
+## "DEPLOYADO"  ==>
+[Link a proyecto](https://sotodeborahcar.github.io/adoptadas/)
