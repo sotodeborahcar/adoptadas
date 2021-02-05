@@ -57,6 +57,10 @@ nav {
   margin: 0;
 }
 
+.main_img {
+  display: flex;
+}
+
 .main_img img {
   width: 100%;
   height: auto;
@@ -85,12 +89,14 @@ nav {
   color: #000;
 }
 
-.card:hover button {
+.card:hover button,
+#cerrarModal {
   color: #1a75bc;
   border: 1px solid #1a75bc;
 }
 
-.card:hover h3 {
+.card:hover h3,
+#cerrarModal {
   color: #1a75bc;
 }
 
@@ -149,19 +155,69 @@ nav {
   text-align: center;
   letter-spacing: 2px;
 }
+form {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+label {
+  padding: 10px;
+}
+
 .modal {
-  width: 700px;
-  height: 500px;
-  background-color: pink;
+  width: 400px;
+  height: 450px;
+  background: linear-gradient(
+    270deg,
+    rgba(11, 104, 243, 0.947),
+    rgba(245, 226, 21, 0.947)
+  );
+  /* background: linear-gradient(
+      180deg,
+      rgba(235, 237, 240, 0.5),
+      rgba(240, 240, 7, 0.5)
+    ),
+    url(https://i.pinimg.com/originals/3b/19/a2/3b19a2c666448a6f0ee3398273287367.jpg); */
+  border: 5px solid #1a75bc;
+  border-radius: 10px;
   position: fixed;
   top: 200px;
-  left: 200px;
+  left: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px;
+}
+.imagen-modal {
+  display: flex;
+  justify-content: flex-end;
+}
+.imagen-modal img:hover {
+  transform: translate(-90px, 0px);
+  transition: 5s;
+}
+
+.imagen-modal img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  border: 5px solid #fed201;
 }
 .noMostrar {
   display: none;
 }
-.red {
-  color: #000;
+.color-modal {
+  color: rgb(0, 0, 0);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 20px;
+}
+#cerrarModal {
+  color: #fafafa;
+  background-color: #01080e;
+  padding: 8px;
+}
+#cerrarModal:hover {
+  background-color: #fed201;
+  color: #000;
 }

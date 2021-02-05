@@ -7,7 +7,7 @@ const gatos = [
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit libero dolorum aliquam error expedita distinctio porro ducimus ex repellendus laboriosam. Sequi, doloribus autem? Unde commodi assumenda consequatur ratione numquam distinctio nihil blanditiis quae debitis sed eligendi modi architecto omnis aspernatur officia molestiae, vero nemo a quibusdam? Voluptatum eveniet blanditiis impedit.",
     img:
       "https://animalrevista.com/wp-content/uploads/2016/07/gatas-calico-tricolor-animal-la-revista.jpg",
-    colores: ["tricolor", "negro", "blanco", "naranja", "rayado"],
+    colores: [" tricolor", " negro", " blanco", " naranja", " rayado"],
     sexo: "m",
   },
 
@@ -31,7 +31,7 @@ const gatos = [
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit libero dolorum aliquam error expedita distinctio porro ducimus ex repellendus laboriosam. Sequi, doloribus autem? Unde commodi assumenda consequatur ratione numquam distinctio nihil blanditiis quae debitis sed eligendi modi architecto omnis aspernatur officia molestiae, vero nemo a quibusdam? Voluptatum eveniet blanditiis impedit.",
     img:
       "https://image.freepik.com/foto-gratis/primer-plano-hermoso-gato-negro-blanco-marcas-sueno-cara-acostado-piso-concreto_44161-220.jpg",
-    colores: ["negro", "blanco"],
+    colores: [" negro", " blanco"],
     sexo: "f",
   },
 
@@ -59,25 +59,25 @@ const gatos = [
     sexo: "m",
   },
   {
-    name: "Calamardo 2",
+    name: "Almohaditas",
     shortDesc:
       "Dicen que de noche, cuando nadie lo puede escuchar, invoca a Cthulu. Muy mimoso.",
     longDesc:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit libero dolorum aliquam error expedita distinctio porro ducimus ex repellendus laboriosam. Sequi, doloribus autem? Unde commodi assumenda consequatur ratione numquam distinctio nihil blanditiis quae debitis sed eligendi modi architecto omnis aspernatur officia molestiae, vero nemo a quibusdam? Voluptatum eveniet blanditiis impedit.",
     img:
-      "https://misanimales.com/wp-content/uploads/2018/07/mito-del-gato-negro.jpg",
-    colores: ["negro"],
-    sexo: "m",
+      "https://misanimales.com/wp-content/uploads/2021/01/ojos-gato-azules-470x313.jpg",
+    colores: ["gris", "blanco"],
+    sexo: "f",
   },
   {
-    name: "Calamardo 3",
+    name: "Cocolito",
     shortDesc:
       "Dicen que de noche, cuando nadie lo puede escuchar, invoca a Cthulu. Muy mimoso.",
     longDesc:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit libero dolorum aliquam error expedita distinctio porro ducimus ex repellendus laboriosam. Sequi, doloribus autem? Unde commodi assumenda consequatur ratione numquam distinctio nihil blanditiis quae debitis sed eligendi modi architecto omnis aspernatur officia molestiae, vero nemo a quibusdam? Voluptatum eveniet blanditiis impedit.",
     img:
-      "https://misanimales.com/wp-content/uploads/2018/07/mito-del-gato-negro.jpg",
-    colores: ["negro"],
+      "https://misanimales.com/wp-content/uploads/2020/10/gato-triste-camara-1024x683.jpg",
+    colores: ["blanco", "marron"],
     sexo: "m",
   },
 ];
@@ -98,6 +98,8 @@ const gatos = [
 
 // console.log(gato.name);
 
+//🤡 🤡 INGRESAR LAS TARJETAS DESDE JS A HTML: 🤡 🤡
+
 // seccionPrincipal.innerHTML = gato // => [object object] es lo que pone en html
 
 // seccionPrincipal.innerHTML = gato.name; // => me da el nombre del gato en html
@@ -116,9 +118,9 @@ const gatos = [
 // `;
 const contenedor = document.querySelector(".adopt");
 
-const mostrarEnHTML = (array) => {
+const mostrarEnHTML = (gatos) => {
   contenedor.innerHTML = "";
-  array.map((gato) => {
+  gatos.map((gato) => {
     contenedor.innerHTML += `
     <div class="card" data-sexo="${gato.sexo}">
       <div class="card_img">
@@ -135,7 +137,7 @@ const mostrarEnHTML = (array) => {
   `;
   });
 };
-//console.log(gatos)
+console.log(gatos);
 mostrarEnHTML(gatos);
 
 // const contExtra = document.querySelector(".adopt-extra");
@@ -159,11 +161,15 @@ const likes = document.querySelectorAll("#likes");
 
 // console.log(corazones);
 
-// forEach => RECORRE ELEMENTOS DE UNA LISTA DE NODOS , SIMILAR AL MAP
+// forEach => RECORRE ELEMENTOS DE UNA LISTA DE NODOS , SIMILAR AL MAP (TIPO CLON)
 
 corazones.forEach((corazon, indiceCorazon) => {
   corazon.onclick = () => {
     console.log("me hicieron click", indiceCorazon);
+
+    // mega sugerencia de marian, borro lo de abajo:
+    // let cantidadDeLikes = Numbres(likes[indiceCorazon].textContent)
+    // cantidadDeLikes++
 
     likes.forEach((like, indiceLike) => {
       if (indiceCorazon === indiceLike) {
@@ -172,10 +178,6 @@ corazones.forEach((corazon, indiceCorazon) => {
         like.textContent = cantidadDeLikes;
       }
     });
-
-    // mega sugerencia de marian:
-    // let cantidadDeLikes = Numbres(likes[indiceCorazon].textContent)
-    // cantidadDeLikes++
   };
 });
 
@@ -193,8 +195,21 @@ botones.forEach((boton) => {
     gatos.map((gato) => {
       if (gato.name === boton.dataset.name) {
         modalContenido.innerHTML = `
-          <div class="red">Nombre: ${gato.name}</div>
-          Descripcion: ${gato.longDesc}
+          <div class="color-modal">
+           <div class="modal-contenido">
+              <h3>Nombre: ${gato.name}</h3>
+              <br>
+              <p>Descripcion: ${gato.shortDesc}</p>
+              <br>
+              <p>Color: ${gato.colores}</p>
+              <br>
+              <p>Sexo: ${gato.sexo}</p>
+              🧶 🧶 🧶
+              <div class="imagen-modal">
+                <img src="${gato.img}" />
+              </div>
+            </div>
+          </div>
           `;
       }
     });
@@ -226,6 +241,7 @@ form.onsubmit = (e) => {
       const gatosFiltrados = gatos.filter((gato) => {
         return gato.sexo === radio.value;
       });
+      console.log("hola");
 
       mostrarEnHTML(gatosFiltrados);
     }

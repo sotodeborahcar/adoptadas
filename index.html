@@ -36,15 +36,21 @@
         </p>
       </div>
       <div class="main_img">
-        <img src="img/main_img.jpg" />
+        <img src="img/curiosidades-gatos.jpg" />
       </div>
     </section>
 
     <section class="form">
       <form>
-        <input type="radio" name="sexo" value="m" />Masculino
-        <input type="radio" name="sexo" value="f" />Femenino
-        <input type="radio" name="sexo" value="i" />Indistinto
+        <label for="sexo"
+          >Masculino <input type="radio" name="sexo" value="m"
+        /></label>
+        <label for="sexo"
+          >Femenino <input type="radio" name="sexo" value="f"
+        /></label>
+        <label for="sexo"
+          >Indistinto <input type="radio" name="sexo" value="i"
+        /></label>
 
         <input type="submit" value="Buscar" />
       </form>
@@ -56,7 +62,9 @@
 
     <div class="footer">
       <div class="footer_icons">
-        <i class="fa fa-facebook"></i>
+        <a href="https://www.facebook.com/soto.dc.es">
+          <i class="fa fa-facebook"></i>
+        </a>
         <i class="fa fa-google-plus"></i>
         <i class="fa fa-twitter"></i>
         <i class="fa fa-dribbble"></i>
@@ -65,7 +73,8 @@
     </div>
 
     <div class="modal noMostrar">
-      hola soy un modal
+      <h3>Hola estoy en Adopcion y busco una familia 🐱!!!</h3>
+      <br />
       <div class="modalContenido"></div>
       <button id="cerrarModal">Cerrar</button>
     </div>
